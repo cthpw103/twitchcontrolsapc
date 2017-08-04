@@ -47,6 +47,26 @@ Bot.connect()
   Bot.raw((err, event) => {
     console.log(event)
   })
+const commands = {
+ //*keyboard
+  keyboard : (chatter) => {
+    robot.typeString(chatter.msg.slice(10));
+  },
+ //*keytap
+  keytap : (chatter) => {
+    robot.keyTap(chatter.msg.slice(8));
+  }
+
+}
+
+Bot.commands('*', commands, (err, chatter, command) => {
+  if(err) {
+    console.log(err)
+  } else {
+    console.log(command)
+    console.log(chatter)
+  }
+})
 })
 .catch(err => {
   console.log('Connection error!')
