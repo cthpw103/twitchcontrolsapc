@@ -21,19 +21,29 @@ Bot.connect()
   })
  
   Bot.listenFor('up', (err, chatter) => {
-    robot.moveMouse(mouse.x,mouse.y+100);
+    robot.moveMouseSmooth(mouse.x,mouse.y+100);
   })
   
   Bot.listenFor('down', (err, chatter) => {
-    robot.moveMouse(mouse.x,mouse.y-100);
+    robot.moveMouseSmooth(mouse.x,mouse.y-100);
   })
   
   Bot.listenFor('right', (err, chatter) => {
-    robot.moveMouse(mouse.x+100,mouse.y);
+    robot.moveMouseSmooth(mouse.x+100,mouse.y);
   })
+ 
   Bot.listenFor('left', (err, chatter) => {
-    robot.moveMouse(mouse.x-100,mouse.y);
+    robot.moveMouseSmooth(mouse.x-100,mouse.y);
   })
+ 
+  Bot.listenFor('leftclick', (err, chatter) => {
+    robot.mouseClick("left");
+  })
+ 
+  Bot.listenFor('rightclick', (err, chatter) => {
+    robot.mouseClick("right");
+  })
+ 
   Bot.raw((err, event) => {
     console.log(event)
   })
